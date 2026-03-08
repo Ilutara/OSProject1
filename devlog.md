@@ -12,3 +12,10 @@ created git repo, did initial commit, removed swp file created by keeping md fii
 
 3/7/2026 16:01
 Goal for session: work on log file
+
+What was accomplished: outlined structure of file, added method to format log message and print it to file
+
+I noticed a few things:
+- file is rewritten every time i run the program. may need to fix this depending on how exactly i use this
+- no new line at end of each log, easy fix
+- QUIT not added to history -- change how handled

@@ -1,7 +1,12 @@
 import sys
+from datetime import datetime
+import pytz
 
-#def message(file, str):
-	
+def message(file, str):
+	spl = str.split(" ", 1)
+	logMsg = datetime.now().strftime("%y-%m-%d %H:%M") + " [" + spl[0] + "] " + spl[1]
+	print(logMsg)
+	file.write(logMsg)
 
 if __name__ == "__main__":
 	if len(sys.argv) != 2:
@@ -16,5 +21,5 @@ if __name__ == "__main__":
 			msg = input("boop> ")
 			if msg == "QUIT":
 				break
-			print("success")
+			message(file, msg)	
 		#file.write('Hello World!')
