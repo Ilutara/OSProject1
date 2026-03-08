@@ -25,7 +25,17 @@ Goals: fix some of the things I noticed, work on encrypt file
 
 Will delay fixing file stuff until i figure out exactly how to call/use logger.py
 
-Accomplished: 
+For vignere cipher: what if there are non alphabetic characters? leave them as is for now
+This was answered in the documentation: assume alpha input of one case. added handling for other cases just in case
+
+making each command all caps can be annoying when testing: make it accept all lowercase too?
+
+3/8/2026 16:14
+I did accomplish my goal for the session. Namely:
 - fixed newline issue
 - noticed year was only 2 characters, fixed that by using %Y instead of %y
-- 
+- coded the encrypt/decrypt file
+
+I just realized I have not followed the proper format for the devlog, so I will start now.
+
+Next session I'm thinking of doing the driver program and working with streams to make sure that part of the project works properly.
