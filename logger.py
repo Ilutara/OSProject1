@@ -4,9 +4,9 @@ import pytz
 
 def message(file, str):
 	spl = str.split(" ", 1)
-	logMsg = datetime.now().strftime("%y-%m-%d %H:%M") + " [" + spl[0] + "] " + spl[1]
+	logMsg = datetime.now().strftime("%Y-%m-%d %H:%M") + " [" + spl[0] + "] " + spl[1]
 	print(logMsg)
-	file.write(logMsg)
+	file.write(logMsg + "\n")
 
 if __name__ == "__main__":
 	if len(sys.argv) != 2:
@@ -23,3 +23,4 @@ if __name__ == "__main__":
 				break
 			message(file, msg)	
 		#file.write('Hello World!')
+

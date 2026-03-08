@@ -18,4 +18,14 @@ What was accomplished: outlined structure of file, added method to format log me
 I noticed a few things:
 - file is rewritten every time i run the program. may need to fix this depending on how exactly i use this
 - no new line at end of each log, easy fix
-- QUIT not added to history -- change how handled
+- QUIT not added to history -- change how handle
+
+3/8/2026 12:45
+Goals: fix some of the things I noticed, work on encrypt file
+
+Will delay fixing file stuff until i figure out exactly how to call/use logger.py
+
+Accomplished: 
+- fixed newline issue
+- noticed year was only 2 characters, fixed that by using %Y instead of %y
+- 
