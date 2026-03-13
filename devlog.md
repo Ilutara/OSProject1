@@ -38,4 +38,9 @@ I did accomplish my goal for the session. Namely:
 
 I just realized I have not followed the proper format for the devlog, so I will start now.
 
-Next session I'm thinking of doing the driver program and working with streams to make sure that part of the project works properly.
+Next session I'm thinking of doing the driver program and working with streams to make sure that part of the project works properly
+
+3/13/2026 16:03
+Goal: build most of the driver program
+
+Future task: final tests, comments (possibly), and submission
