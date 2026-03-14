@@ -1,4 +1,5 @@
 from logger import log
+import sys
 
 __passkey = ""
 
@@ -41,32 +42,37 @@ def vignere_decrypt(word):
 
 
 if __name__ == "__main__":
-	while True:
-		msg = input("> ")
-		#print("IN: ", msg)
-		#log("testboop")
+	for msg in sys.stdin:
+		msg = msg.strip()
+
 		temp = msg.split(" ", 1)
 		cmd = temp[0].upper()
 		
 		if cmd == "PASS" or cmd == "PASSKEY":
 			#print(f"len is {len(temp)}")
 			if len(temp) != 2:
-				print("Must have argument. Try again")
+				print("Must have argument. Try again", file=sys.stdout)
+				sys.stdout.flush()
 				continue
 			__passkey = temp[1]
-			print(f"RESULT")
+			print(f"RESULT", file=sys.stdout)
+			sys.stdout.flush()
 		elif cmd == "ENCRYPT":
 			if len(temp) != 2:
-				print("ERROR must have argument")
+				print("ERROR must have argument", file=sys.stdout)
+				sys.stdout.flush()
 				continue
 			vignere_encrypt(temp[1])
 		elif cmd == "DECRYPT":
 			if len(temp) != 2:
-				print("ERROR must have argument")
+				print("ERROR must have argument", file=sys.stdout)
+				sys.stdout.flush()
 				continue
 			vignere_decrypt(temp[1])
 		elif cmd == "QUIT":
+			print("QUIT", file=sys.stdout)
 			break
 		else:
-			print("Invalid option. Try again")
+			print("Invalid option. Try again", file=sys.stdout)
+			sys.stdout.flush()
 			#return ERROR
