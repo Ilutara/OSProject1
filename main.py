@@ -20,8 +20,17 @@ def get_string(save):
     if option == 1: #history option
         for i, s in enumerate(history):
             print(f"{i}: {s}")
+        print("Enter -1 to cancel and enter a new string.")
         nb = int(input("Enter the number of the string you would like to use: "))
-        if nb >= len(history) or nb < 0:
+        if nb == -1:
+            str = input("Enter string: ").lower()
+            if not str.isalpha():
+                print("Error: only letters allowed.")
+                return get_string(save)
+            if save:
+                history.append(s)
+            return s
+        elif nb >= len(history) or nb < 0:
             print("Error: index out of bounds")
             return get_string(save)
         str = history[nb]

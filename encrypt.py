@@ -26,6 +26,7 @@ def vignere_decrypt(word):
 	decrypted = ""
 	if __passkey == "":
 		print("ERROR Password not set", flush=True)
+		return
 	full_length_passkey = (__passkey * (len(word) // len(__passkey))) + __passkey[:len(word) % len(__passkey)]
 	#print(full_length_passkey)
 	for i in range(len(word)):

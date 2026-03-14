@@ -67,6 +67,7 @@ password used by driver and passkey used by encryption?? both pass and passkey m
 results must also be logged
 python compatibility issues?
 entered passwords not stored in history
+once a valid string obtained for encryption/decryption store it in history
 
 fixed:
 logging messages (prints results and formatted properly)
@@ -74,5 +75,4 @@ pipe flow logic
 logging start and exit of driver
 menu
 options when entering string (also bonus feature of not needing to do this if history is empty)
-
-still need to add history exit option
+history exit option
