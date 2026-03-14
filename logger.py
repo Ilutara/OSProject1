@@ -13,10 +13,12 @@ def log(fileName):
 
 def message(file, str):
 	spl = str.split(" ", 1)
-	if len(spl) < 2:
-		return
+	#if len(spl) < 2:
+	#	return
 
-	logMsg = datetime.now().strftime("%Y-%m-%d %H:%M") + " [" + spl[0] + "] " + spl[1]
+	logMsg = datetime.now().strftime("%Y-%m-%d %H:%M") + " [" + spl[0] + "] "
+	if len(spl) >= 2:
+		logMsg += spl[1]
 	#print(logMsg, file = sys.stdout)
 	file.write(logMsg + "\n")
 	file.flush()

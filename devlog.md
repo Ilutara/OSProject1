@@ -54,7 +54,7 @@ encrypt program -> result to command line (through driver or directly)?
 logger program -> print to file
 
 still have to do:
-fix logging messages
+fix logging messages -- includes results
 fix pipe flow -- fixed minus printing log to file for some reason
 fix sessions in file? prevent complete overwrite?
 password command options
@@ -64,3 +64,12 @@ note:
 history lasts per run--move to file maybe?
 history contains all strings entered to be encrypted or decrypted
 password used by driver and passkey used by encryption?? both pass and passkey mentioned in documentation for encrypt.py
+results must also be logged
+python compatibility issues?
+
+fixed:
+logging messages (prints results and formatted properly)
+pipe flow logic
+logging start and exit of driver
+
+

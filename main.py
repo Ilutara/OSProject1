@@ -26,7 +26,7 @@ if __name__ == "__main__":
     log = subprocess.Popen(["python3", "logger.py", fileName], stdin=subprocess.PIPE, text=True)
     encrypt = subprocess.Popen(["python3", "encrypt.py"], stdin=subprocess.PIPE, stdout=subprocess.PIPE, text=True)
 
-    log.stdin.write("START driver")
+    log.stdin.write("START driver\n")
     log.stdin.flush()
 
     while True:
@@ -43,35 +43,52 @@ if __name__ == "__main__":
             if not pwd.isalpha():
                 print("Error: only letters allowed.")
                 continue
-
-            encrypt.stdin.write(f"PASS {pwd}\n")
+            msg = f"PASSKEY {pwd}\n"
+            encrypt.stdin.write(msg)
             encrypt.stdin.flush()
+            log.stdin.write(msg)
+            log.stdin.flush()
 
             result = encrypt.stdout.readline().strip()
             print(result)
+            log.stdin.write(result+"\n")
+            log.stdin.flush()
         elif cmd == "encrypt":
             s = get_string()
-            encrypt.stdin.write(f"ENCRYPT {s}\n")
+            msg = f"ENCRYPT {s}\n"
+            encrypt.stdin.write(msg)
             encrypt.stdin.flush()
+            log.stdin.write(msg)
+            log.stdin.flush()
             result = encrypt.stdout.readline().strip()
             print(result)
+            log.stdin.write(result+"\n")
+            log.stdin.flush()
         elif cmd == "decrypt":
             s = get_string()
-            encrypt.stdin.write(f"DECRYPT {s}\n")
+            msg = f"DECRYPT {s}\n"
+            encrypt.stdin.write(msg)
             encrypt.stdin.flush()
+            log.stdin.write(msg)
+            log.stdin.flush()
 
             result = encrypt.stdout.readline().strip()
             print(result)
+            log.stdin.write(result+"\n")
+            log.stdin.flush()
         elif cmd == "quit":
             encrypt.stdin.write("QUIT\n")
             encrypt.stdin.flush()
 
-            log.stdin.write("quit\n")
+            log.stdin.write("QUIT\n")
             log.stdin.flush()
             break
 
         else:
             print("Invalid command.")
+
+    log.stdin.write("EXIT driver\n")
+    log.stdin.flush()
 
     encrypt.stdin.close()
     log.stdin.close()
