@@ -65,8 +65,10 @@ if __name__ == "__main__":
 
     fileName = sys.argv[1]
 
-    log = subprocess.Popen(["python3", "logger.py", fileName], stdin=subprocess.PIPE, text=True)
-    encrypt = subprocess.Popen(["python3", "encrypt.py"], stdin=subprocess.PIPE, stdout=subprocess.PIPE, text=True)
+    #log = subprocess.Popen(["python3", "logger.py", fileName], stdin=subprocess.PIPE, text=True)
+    #encrypt = subprocess.Popen(["python3", "encrypt.py"], stdin=subprocess.PIPE, stdout=subprocess.PIPE, text=True)
+    log = subprocess.Popen(["python3", "logger.py", fileName], stdin=subprocess.PIPE, universal_newlines = True)
+    encrypt = subprocess.Popen(["python3", "encrypt.py"], stdin=subprocess.PIPE, stdout=subprocess.PIPE, universal_newlines = True)
 
     log.stdin.write("START driver\n")
     log.stdin.flush()
