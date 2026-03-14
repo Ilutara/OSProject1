@@ -45,3 +45,22 @@ Goal: build most of the driver program
 
 Future task: final tests, comments (possibly), and submission
 
+Current problems: encrypt doesn't print results to command line, message logging is messed up
+
+what is the flow of info?
+input to driver -> send valid command to encrypt
+		-> send valid command to logger? yes since encrypt doesn't have history feature
+encrypt program -> result to command line (through driver or directly)?
+logger program -> print to file
+
+still have to do:
+fix logging messages
+fix pipe flow -- fixed minus printing log to file for some reason
+fix sessions in file? prevent complete overwrite?
+password command options
+log exit of driver, change start message?
+
+note:
+history lasts per run--move to file maybe?
+history contains all strings entered to be encrypted or decrypted
+password used by driver and passkey used by encryption?? both pass and passkey mentioned in documentation for encrypt.py

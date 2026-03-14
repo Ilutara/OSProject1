@@ -24,7 +24,7 @@ if __name__ == "__main__":
     fileName = sys.argv[1]
 
     log = subprocess.Popen(["python3", "logger.py", fileName], stdin=subprocess.PIPE, text=True)
-    encrypt = subprocess.Popen(["python3", "encrypt.py"], stdin=subprocess.PIPE, stdout=log.stdin, text=True)
+    encrypt = subprocess.Popen(["python3", "encrypt.py"], stdin=subprocess.PIPE, stdout=subprocess.PIPE, text=True)
 
     log.stdin.write("START driver")
     log.stdin.flush()
@@ -47,21 +47,26 @@ if __name__ == "__main__":
             encrypt.stdin.write(f"PASS {pwd}\n")
             encrypt.stdin.flush()
 
+            result = encrypt.stdout.readline().strip()
+            print(result)
         elif cmd == "encrypt":
             s = get_string()
             encrypt.stdin.write(f"ENCRYPT {s}\n")
             encrypt.stdin.flush()
-
+            result = encrypt.stdout.readline().strip()
+            print(result)
         elif cmd == "decrypt":
             s = get_string()
             encrypt.stdin.write(f"DECRYPT {s}\n")
             encrypt.stdin.flush()
 
+            result = encrypt.stdout.readline().strip()
+            print(result)
         elif cmd == "quit":
             encrypt.stdin.write("QUIT\n")
             encrypt.stdin.flush()
 
-            log.stdin.write("QUIT\n")
+            log.stdin.write("quit\n")
             log.stdin.flush()
             break
 

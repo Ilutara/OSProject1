@@ -6,7 +6,7 @@ __passkey = ""
 def vignere_encrypt(word):
 	encrypted = ""
 	if __passkey == "":
-		print("ERROR Password not set")
+		print("ERROR Password not set", flush=True)
 		return
 	full_length_passkey = (__passkey * (len(word) // len(__passkey))) + __passkey[:len(word) % len(__passkey)]
 	#print(full_length_passkey)
@@ -19,13 +19,13 @@ def vignere_encrypt(word):
 				encrypted += chr((ord(word[i]) + shift - ord('a')) % 26 + ord('a'))
 		else:
 			encrypted += word[i]
-	print(f"RESULT {encrypted}")
+	print(f"RESULT {encrypted}", flush=True)
 	return encrypted
 
 def vignere_decrypt(word):
 	decrypted = ""
 	if __passkey == "":
-		print("ERROR Password not set")
+		print("ERROR Password not set", flush=True)
 	full_length_passkey = (__passkey * (len(word) // len(__passkey))) + __passkey[:len(word) % len(__passkey)]
 	#print(full_length_passkey)
 	for i in range(len(word)):
@@ -37,7 +37,7 @@ def vignere_decrypt(word):
 				decrypted += chr((ord(word[i]) - shift - ord('a')) % 26 + ord('a'))
 		else:
 			decrypted += word[i]
-	print(f"RESULT {decrypted}")
+	print(f"RESULT {decrypted}", flush=True)
 	return decrypted
 
 
@@ -51,28 +51,23 @@ if __name__ == "__main__":
 		if cmd == "PASS" or cmd == "PASSKEY":
 			#print(f"len is {len(temp)}")
 			if len(temp) != 2:
-				print("Must have argument. Try again", file=sys.stdout)
-				sys.stdout.flush()
+				print("Must have argument. Try again", flush=True)
 				continue
 			__passkey = temp[1]
-			print(f"RESULT", file=sys.stdout)
-			sys.stdout.flush()
+			print(f"RESULT", flush=True)
 		elif cmd == "ENCRYPT":
 			if len(temp) != 2:
-				print("ERROR must have argument", file=sys.stdout)
-				sys.stdout.flush()
+				print("ERROR must have argument", flush=True)
 				continue
 			vignere_encrypt(temp[1])
 		elif cmd == "DECRYPT":
 			if len(temp) != 2:
-				print("ERROR must have argument", file=sys.stdout)
-				sys.stdout.flush()
+				print("ERROR must have argument", flush=True)
 				continue
 			vignere_decrypt(temp[1])
 		elif cmd == "QUIT":
-			print("QUIT", file=sys.stdout)
+			print("QUIT", flush=True)
 			break
 		else:
-			print("Invalid option. Try again", file=sys.stdout)
-			sys.stdout.flush()
+			print("Invalid option. Try again", flush=True)
 			#return ERROR
