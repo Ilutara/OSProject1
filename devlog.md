@@ -76,3 +76,17 @@ logging start and exit of driver
 menu
 options when entering string (also bonus feature of not needing to do this if history is empty)
 history exit option
+
+does QUIT get logged? since it says accept log message UNTIL it receives QUIT probably not
+
+3/13 23:29
+DONE!
+I have completed all the project requirements. Everything works on my machine.
+My only concern is that this may not work on the cs1 and cs2 machines as I am not on campus and cannot check as VPN usage was restricted and I cannot access it.
+The only issue may be universal_newline = true from Text=true.
+
+Next steps:
+clean up unnecessary files
+commit, push
+add read me
+zip up and submit

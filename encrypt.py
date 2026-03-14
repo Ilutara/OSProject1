@@ -9,7 +9,6 @@ def vignere_encrypt(word):
 		print("ERROR Password not set", flush=True)
 		return
 	full_length_passkey = (__passkey * (len(word) // len(__passkey))) + __passkey[:len(word) % len(__passkey)]
-	#print(full_length_passkey)
 	for i in range(len(word)):
 		if word[i].isalpha():
 			shift = ord(full_length_passkey[i].upper()) - ord('A')
@@ -28,7 +27,6 @@ def vignere_decrypt(word):
 		print("ERROR Password not set", flush=True)
 		return
 	full_length_passkey = (__passkey * (len(word) // len(__passkey))) + __passkey[:len(word) % len(__passkey)]
-	#print(full_length_passkey)
 	for i in range(len(word)):
 		if word[i].isalpha():
 			shift = ord(full_length_passkey[i].upper()) - ord('A')
@@ -51,7 +49,7 @@ if __name__ == "__main__":
 		
 		if cmd == "PASS" or cmd == "PASSKEY":
 			if len(temp) != 2:
-				print("Must have argument. Try again", flush=True)
+				print("ERROR must have argument. Try again", flush=True)
 				continue
 			__passkey = temp[1]
 			print(f"RESULT", flush=True)
@@ -69,5 +67,4 @@ if __name__ == "__main__":
 			print("QUIT", flush=True)
 			break
 		else:
-			print("Invalid option. Try again", flush=True)
-			#return ERROR
+			print("ERROR invalid option. Try again", flush=True)

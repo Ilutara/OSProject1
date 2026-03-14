@@ -3,6 +3,17 @@ import subprocess
 
 history = []
 
+def handle_pipes(msg):
+    encrypt.stdin.write(msg)
+    encrypt.stdin.flush()
+    log.stdin.write(msg)
+    log.stdin.flush()
+    result = encrypt.stdout.readline().strip()
+    print(result)
+    log.stdin.write(result+"\n")
+    log.stdin.flush()
+
+
 def get_string(save):
     global history
 
@@ -14,10 +25,10 @@ def get_string(save):
         if save == True:
             history.append(str)
         return str
-            
 
     option = int(input("Enter 1 if you would like to use a past string and enter 2 if you would like to use a new string: "))
     if option == 1: #history option
+        print("history...")
         for i, s in enumerate(history):
             print(f"{i}: {s}")
         print("Enter -1 to cancel and enter a new string.")
@@ -72,47 +83,24 @@ if __name__ == "__main__":
         elif cmd == "password":
             pwd = get_string(False)
             msg = f"PASSKEY {pwd}\n"
-            encrypt.stdin.write(msg)
-            encrypt.stdin.flush()
-            log.stdin.write(msg)
-            log.stdin.flush()
-            result = encrypt.stdout.readline().strip()
-            print(result)
-            log.stdin.write(result+"\n")
-            log.stdin.flush()
+            handle_pipes(msg)
         elif cmd == "encrypt":
             s = get_string(True)
             msg = f"ENCRYPT {s}\n"
-            encrypt.stdin.write(msg)
-            encrypt.stdin.flush()
-            log.stdin.write(msg)
-            log.stdin.flush()
-            result = encrypt.stdout.readline().strip()
-            print(result)
-            log.stdin.write(result+"\n")
-            log.stdin.flush()
+            handle_pipes(msg)
         elif cmd == "decrypt":
             s = get_string(True)
             msg = f"DECRYPT {s}\n"
-            encrypt.stdin.write(msg)
-            encrypt.stdin.flush()
-            log.stdin.write(msg)
-            log.stdin.flush()
-            result = encrypt.stdout.readline().strip()
-            print(result)
-            log.stdin.write(result+"\n")
-            log.stdin.flush()
+            handle_pipes(msg)
         elif cmd == "quit":
             encrypt.stdin.write("QUIT\n")
             encrypt.stdin.flush()
+            log.stdin.write("EXIT driver\n")
             log.stdin.write("QUIT\n")
             log.stdin.flush()
             break
         else:
-            print("Invalid command.")
-
-    log.stdin.write("EXIT driver\n")
-    log.stdin.flush()
+            print("ERROR invalid command.")
 
     encrypt.stdin.close()
     log.stdin.close()
