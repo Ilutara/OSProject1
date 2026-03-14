@@ -49,7 +49,6 @@ if __name__ == "__main__":
 		cmd = temp[0].upper()
 		
 		if cmd == "PASS" or cmd == "PASSKEY":
-			#print(f"len is {len(temp)}")
 			if len(temp) != 2:
 				print("Must have argument. Try again", flush=True)
 				continue

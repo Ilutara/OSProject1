@@ -66,10 +66,13 @@ history contains all strings entered to be encrypted or decrypted
 password used by driver and passkey used by encryption?? both pass and passkey mentioned in documentation for encrypt.py
 results must also be logged
 python compatibility issues?
+entered passwords not stored in history
 
 fixed:
 logging messages (prints results and formatted properly)
 pipe flow logic
 logging start and exit of driver
+menu
+options when entering string (also bonus feature of not needing to do this if history is empty)
 
-
+still need to add history exit option

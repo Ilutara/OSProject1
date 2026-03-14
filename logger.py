@@ -29,6 +29,5 @@ if __name__ == "__main__":
 		sys.exit(1)
 
 	fileName = sys.argv[1]
-	print("File name: ", fileName)
 	log(fileName)
 
